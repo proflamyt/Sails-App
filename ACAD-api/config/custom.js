@@ -19,5 +19,8 @@ module.exports.custom = {
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
   emailProofTokenTTL: 24 * 60 * 60 * 1000,
+  baseUrl : 'http://127.0.0.1:3000',
+  passwordResetTokenTTL: 24 * 60 * 60 * 1000, // 24 hours
+  
 
 };
