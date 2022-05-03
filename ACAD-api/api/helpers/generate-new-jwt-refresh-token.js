@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
 
-    subject: {
+    refresh: {
       type: "string",
       required: true,
       isEmail: true,
@@ -32,18 +32,23 @@ module.exports = {
     try {
       const random =  await sails.helpers.strings.random('url-friendly');
       const payload = {
-        sub: inputs.subject, // subject
-        iss: "LogRocket Sails API" // issuer,
+        sub: inputs.refresh, // subject
+        iss: "LogRocket Sails API", // issuer,
+        jti: random
 
    };
         // generate and regenerate refresh token 
     const token = jwt.sign(payload, secret, { expiresIn: "30d" });
+
+    return token ;
+
+    
     
     } catch (error) {
       
     }
     // generate and regenerate refresh token 
-    const token = jwt.sign(payload, secret, { expiresIn: "30d" });
+    
     // send valid token or if time don go , regenerate , save and send token
 
 

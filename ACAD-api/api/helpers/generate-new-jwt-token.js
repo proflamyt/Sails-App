@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 
 module.exports = {
@@ -11,10 +12,15 @@ module.exports = {
 
 
   inputs: {
-
+    // regenerate refresh token 
     subject: {
       type: "string",
-      required: true
+      required: true,
+      isEmail: true,
+  },
+  refresh : {
+    type: "string",
+    required: false
   }
 
   },
@@ -29,8 +35,52 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     // TODO
+
+    try {
+
+      const payload = {
+        sub: inputs.subject, // subject
+        iss: "LogRocket Sails API" // issuer
+   };
+   // check JWT refresh token
+   const refresh = inputs.refresh // check 
+   if (refresh){
+   jwt.verify(token, secret, function(err, decoded) {
+
+    if (err){
+      exits.error
+    }
+    const token = jwt.sign(payload, secret, { expiresIn: "1d" });
+    return token
+  });
+}
+
+    const token = jwt.sign(payload, secret, { expiresIn: "1d" });
+    return token;
+  
+
+  // supply valid refresh token
+  
+      
+    } catch (error) {
+      
+
+    }
+    
+    
+
+    
+
+
+
+    
+
+
+ 
+
+
   }
 
 

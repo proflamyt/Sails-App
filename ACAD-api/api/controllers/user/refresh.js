@@ -47,9 +47,15 @@ module.exports = {
       });
     };
 
-    var user = await this.req.user;
+    jwt.verify(inputs.token, secret, function(err, decoded) {
+
+      if (err){
+        exits.error
+      }
+      const user = decoded.user
+    });
     // t
-    if (!user || user.emailProofTokenExpiresAt <= Date.now() || user.RefreshToken != inputs.token) {
+    if (!user ) {
       return exits.invalidOrExpiredToken({
         error: "Invalid Refresh Token, Login to regenerate refresh token",
       });
