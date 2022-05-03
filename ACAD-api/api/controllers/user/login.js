@@ -12,6 +12,7 @@ module.exports = {
     email: {
       type: "string",
       required: true,
+      isEmail: true
     },
   password: {
     type: "string",
@@ -32,7 +33,7 @@ module.exports = {
   },
   passwordMismatch: {
     statusCode: 401,
-    description: "Password do not match",
+    description: "Invalid Username or Password",
   },
   operationalError: {
     statusCode: 400,
@@ -61,7 +62,9 @@ module.exports = {
 });
 
       const token = await sails.helpers.generateNewJwtToken(user.email);
+      const refresh = await sails.helpers.generateNewRefreshToken(user.email);
       this.req.me = user;
+      // send request and refresh token 
       return exits.success({
               message: `${user.email} has been logged in`,
               data: user,
@@ -81,6 +84,7 @@ module.exports = {
         message: `Error logging in user ${inputs.email}`,
         error: error.message,
   });
+  
     }
 
   }

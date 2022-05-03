@@ -54,8 +54,9 @@ module.exports = {
       emailProofToken: "",
       emailProofTokenExpiresAt: 0,
   });
+  // LOGIN WITH TOKEN
   return exits.success({
-    message: "Your account has been confirmed",
+    message: "Your account has been confirmed, redirect user to login",
   });
 }
 

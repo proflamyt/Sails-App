@@ -9,11 +9,7 @@ module.exports = {
 
   inputs: {
 
-    fullName: {
-      type: 'string',
-      required: true ,
-    },
-
+   
     email: {
       type: 'string',
       required: true,
@@ -56,7 +52,6 @@ module.exports = {
     const token = await sails.helpers.strings.random('url-friendly');
 
     let newUser = await User.create({
-      fullName: inputs.fullName,
       email: newEmailAddress,
       password: inputs.password,
       emailProofToken: token,
@@ -86,7 +81,13 @@ module.exports = {
         message: 'Oops :) an error occurred',
         error: 'This email address already exits',
       });
+
+    
 }
+      return exits.error({
+        message: 'Oops :) an error occurred',
+        error: error.message,
+      });
      
    }
     
