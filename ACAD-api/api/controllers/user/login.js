@@ -62,13 +62,13 @@ module.exports = {
 });
 
       const token = await sails.helpers.generateNewJwtToken(user.email);
-      const refresh = await sails.helpers.generateNewRefreshToken(user.email);
-      this.req.me = user;
+      const refresh = await sails.helpers.generateNewRefreshToken(subject=user.email);
+      this.req.token = token;
       // send request and refresh token 
       return exits.success({
               message: `${user.email} has been logged in`,
               data: user,
-              token,
+              token,refresh
                          });
 
     } catch (error) {

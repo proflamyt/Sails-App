@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
 
-    token: {
+    refresh: {
       type: 'string',
       description: "The Refresh token for JWT.",
       example: "4-32fad81jdaf$329",
@@ -41,20 +41,21 @@ module.exports = {
 
     // All done.
     try {
-    if (!inputs.token) {
+    if (!inputs.refresh) {
       return exits.invalidOrExpiredToken({
         error: "The provided token is expired, invalid, or already used up.",
       });
     };
 
-    jwt.verify(inputs.token, secret, function(err, decoded) {
+    jwt.verify(inputs.refresh, secret, function(err, decoded) {
 
       if (err){
-        exits.error
-      }
-      const user = decoded.user
+      return exits.invalidToken({
+        error:'wee',
+      })}
+      var user = decoded.user;
     });
-    // t
+
     if (!user ) {
       return exits.invalidOrExpiredToken({
         error: "Invalid Refresh Token, Login to regenerate refresh token",
