@@ -1,6 +1,6 @@
 module.exports['swagger-generator'] = {
     disabled: false,
-    swaggerJsonPath: "./assets/swagger/swagger.json",
+    swaggerJsonPath: "./swagger/swagger.json",
     swagger: {
         openapi: '3.0.0',
         info: {

@@ -5,9 +5,9 @@
     "description": "This is a generated swagger json for your sails project",
     "termsOfService": "http://example.com/terms",
     "contact": {
-      "name": "Theophilus Omoregbee",
-      "url": "http://github.com/theo4u",
-      "email": "theo4u@ymail.com"
+      "name": "ATC ",
+      "url": "http://github.com/atc",
+      "email": "atc@com.com"
     },
     "license": {
       "name": "Apache 2.0",
@@ -21,7 +21,7 @@
     }
   ],
   "externalDocs": {
-    "url": "https://theoomoregbee.github.io/"
+    "url": "http://atc.com.ng"
   },
   "tags": [
     {
