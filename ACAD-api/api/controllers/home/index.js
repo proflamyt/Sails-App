@@ -17,10 +17,10 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
 
     // All done.
-    exits.success({message: 'LogRocket Sails API'});
+    exits.success({message: 'ATC API'});
 
   }
 

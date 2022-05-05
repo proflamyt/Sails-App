@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-
+const secret = sails.config.jwtSecret || process.env.JWT_SECRET;
 
 module.exports = {
 

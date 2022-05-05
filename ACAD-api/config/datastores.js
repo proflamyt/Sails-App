@@ -50,9 +50,9 @@ module.exports.datastores = {
     ***************************************************************************/
 
     // Self reminder : "postgres://{user}:{password}@{hostname}:{port}/{database-name}" 
-    // put credentials in .env
+    // put credentials in .env 
      adapter: 'sails-postgresql',
-     url: 'postgres://logrocket_sails_api:logrocketsailsapi@localhost:5432/logrocket_sails_api', // Replace with your own connection URL
+     url: 'postgres://postgres:postgres@localhost:5432/postgres', // Replace with your own connection URL
 
   },
 

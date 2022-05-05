@@ -62,7 +62,7 @@ module.exports = {
 });
 
       const token = await sails.helpers.generateNewJwtToken(user.email);
-      const refresh = await sails.helpers.generateNewRefreshToken(subject=user.email);
+      const refresh = await sails.helpers.generateNewRefreshToken.with({subject:user.email});
       this.req.token = token;
       // send request and refresh token 
       return exits.success({
