@@ -7,7 +7,7 @@ module.exports['swagger-generator'] = {
             title: 'Swagger Json',
             description: 'This is a generated swagger json for your sails project',
             termsOfService: 'http://example.com/terms',
-            contact: {name: 'ATC ', url: 'http://github.com/theo4u', email: 'atc@com.com'},
+            contact: {name: 'ATC ', url: 'http://github.com/atc', email: 'atc@com.com'},
             license: {name: 'Apache 2.0', url: 'http://www.apache.org/licenses/LICENSE-2.0.html'},
             version: '1.0.0'
         },
