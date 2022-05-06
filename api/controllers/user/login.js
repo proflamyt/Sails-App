@@ -1,5 +1,5 @@
 module.exports = {
-
+  
 
   friendlyName: 'Login',
 
@@ -61,8 +61,8 @@ module.exports = {
           exits.passwordMismatch({ error: error.message });
 });
 
-      const token = await sails.helpers.generateNewJwtToken(user.email);
-      const refresh = await sails.helpers.generateNewRefreshToken.with({subject:user.email});
+      const token = await sails.helpers.generateNewJwtToken({subject:user.email});
+      const refresh = await sails.helpers.generateNewRefreshToken.with(user.email);
       this.req.token = token;
       // send request and refresh token 
       return exits.success({

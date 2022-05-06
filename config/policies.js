@@ -27,6 +27,12 @@ module.exports.policies = {
 
   // use JWT Auth For All Users
 
-  'user/*':'can-login'
+  'user/*':'can-login',
+  'user/login': true,
+  'user/register': true,
+  'user/confirm': true,
+
+  // admin endpoint
+  'api/*': 'is-super-admin'
 
 };

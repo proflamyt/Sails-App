@@ -1,5 +1,6 @@
 module.exports = {
 
+  
 
   friendlyName: 'Confirm email',
 

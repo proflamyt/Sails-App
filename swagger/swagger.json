@@ -32,6 +32,9 @@
       "name": "swagger"
     },
     {
+      "name": "Tag Name"
+    },
+    {
       "name": "Deliver contact form message"
     },
     {
@@ -349,12 +352,30 @@
     },
     "/user/login": {
       "post": {
-        "summary": "Login",
-        "description": "Login user.",
+        "summary": "Authentication",
+        "description": "This is for authentication of any user",
         "tags": [
-          "User"
+          "Tag Name"
         ],
         "parameters": [
+          {
+            "in": "body",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "This is a custom required parameter"
+          },
+          {
+            "in": "body",
+            "name": "password",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "This is a custom required parameter"
+          },
           {
             "in": "query",
             "name": "email",
@@ -388,6 +409,27 @@
           },
           "500": {
             "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
           }
         }
       }
@@ -433,10 +475,21 @@
         "tags": [
           "User"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "albus@dumbledore.com"
+            },
+            "description": "The email address of the user who wants to recover their password."
+          }
+        ],
         "responses": {
           "200": {
-            "description": "The requested resource"
+            "description": "Email matched a user and a recovery email might have been sent"
           },
           "404": {
             "description": "Resource not found"

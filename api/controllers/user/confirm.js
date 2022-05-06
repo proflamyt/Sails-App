@@ -41,6 +41,7 @@ module.exports = {
       });
     };
 
+    // find user with the logged in email
     var user = await User.findOne({ emailProofToken: inputs.token });
 
     if (!user || user.emailProofTokenExpiresAt <= Date.now()) {
