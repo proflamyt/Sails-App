@@ -41,28 +41,23 @@ module.exports = {
 
     // All done.
     try {
-    if (!inputs.refresh) {
+       refresh = inputs.refresh
+    
+    if (!refresh) {
       return exits.invalidOrExpiredToken({
         error: "The provided token is expired, invalid, or already used up.",
       });
     };
 
-    jwt.verify(inputs.refresh, secret, function(err, decoded) {
-
-      if (err){
-      return exits.invalidToken({
-        error:'wee',
-      })}
-      var user = decoded.user;
-    });
-
-    if (!user ) {
+    const token = await sails.helpers.generateNewJwtToken.with({subject:user.email, refresh:refresh});
+    
+    if (!token ) {
       return exits.invalidOrExpiredToken({
         error: "Invalid Refresh Token, Login to regenerate refresh token",
       });
 
     }
-    const token = await sails.helpers.generateNewJwtToken(user.email);
+    
     return exits.success({
       message: `New JWT Token Generated successfully for  ${user.email}`,
       data: user,

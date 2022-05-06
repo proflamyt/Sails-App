@@ -57,19 +57,26 @@ module.exports = {
       emailProofToken: token,
       emailProofTokenExpiresAt:
         Date.now() + sails.config.custom.emailProofTokenTTL,
-    }).fetch();
+    })
+    .fetch();
 
-    const confirmLink = `${sails.config.custom.baseUrl}/user/confirm?token=${token}`;
-    const email = {
-      to: newUser.email,
-      subject: 'Confirm Your account',
-      template: 'confirm',
-      context: {
-        name: newUser.fullName,
-        confirmLink: confirmLink,
-      },
-    };
-    await sails.helpers.sendMail(email);
+
+    if (sails.config.custom.verifyEmailAddresses) {
+      // Send "confirm account" email
+      await sails.helpers.sendTemplateEmail.with({
+        to: newUser.email,
+        subject: 'Please confirm your account',
+        template: 'email-verify-account',
+        templateData: {
+          fullName,
+          token: token
+        }
+      });
+    } else {
+      sails.log.info('Skipping new account email verification... (since `verifyEmailAddresses` is disabled)');
+    }
+
+   
 
     return exits.success({
       message: `An account has been created for ${newUser.email} successfully. Check your email to verify`,
