@@ -47,7 +47,7 @@ module.exports = {
 
     // All done.
     try {
-      const user = await User.findOne({ email: inputs.email });
+      const user = await User.findOne({ emailAddress: inputs.email });
       if (!user) {
         return exits.notAUser(
           {

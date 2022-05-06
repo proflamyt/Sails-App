@@ -32,9 +32,6 @@
       "name": "swagger"
     },
     {
-      "name": "Tag Name"
-    },
-    {
       "name": "Deliver contact form message"
     },
     {
@@ -352,30 +349,12 @@
     },
     "/user/login": {
       "post": {
-        "summary": "Authentication",
-        "description": "This is for authentication of any user",
+        "summary": "Login",
+        "description": "Login user.",
         "tags": [
-          "Tag Name"
+          "User"
         ],
         "parameters": [
-          {
-            "in": "body",
-            "name": "email",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "This is a custom required parameter"
-          },
-          {
-            "in": "body",
-            "name": "password",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "This is a custom required parameter"
-          },
           {
             "in": "query",
             "name": "email",
@@ -409,27 +388,6 @@
           },
           "500": {
             "description": "Internal server error"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "email": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string",
-                    "format": "password"
-                  }
-                },
-                "required": [
-                  "email",
-                  "password"
-                ]
-              }
-            }
           }
         }
       }

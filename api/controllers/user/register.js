@@ -52,7 +52,7 @@ module.exports = {
     const token = await sails.helpers.strings.random('url-friendly');
 
     let newUser = await User.create({
-      email: newEmailAddress,
+      emailAddress: newEmailAddress,
       password: inputs.password,
       emailProofToken: token,
       emailProofTokenExpiresAt:
