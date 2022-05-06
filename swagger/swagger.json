@@ -73,8 +73,7 @@
           {
             "required": [
               "emailAddress",
-              "password",
-              "fullName"
+              "password"
             ]
           }
         ]

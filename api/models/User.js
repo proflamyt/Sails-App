@@ -50,7 +50,7 @@ email status until they click the link in the confirmation email.`
 
     fullName: {
       type: 'string',
-      required: true,
+      required: false,
       description: 'Full representation of the user\'s name.',
       maxLength: 120,
       example: 'Mary Sue van der McHenst'

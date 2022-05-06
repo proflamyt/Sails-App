@@ -53,14 +53,14 @@ module.exports = {
 
     let newUser = await User.create({
       emailAddress: newEmailAddress,
-      password: inputs.password,
+      password: await sails.helpers.passwords.hashPassword(password),
       emailProofToken: token,
       emailProofTokenExpiresAt:
         Date.now() + sails.config.custom.emailProofTokenTTL,
     })
     .fetch();
 
-
+    var email = newUser.emailAddress;
     if (sails.config.custom.verifyEmailAddresses) {
       // Send "confirm account" email
       await sails.helpers.sendTemplateEmail.with({
@@ -68,7 +68,7 @@ module.exports = {
         subject: 'Please confirm your account',
         template: 'email-verify-account',
         templateData: {
-          fullName,
+          email,
           token: token
         }
       });
@@ -79,7 +79,7 @@ module.exports = {
    
 
     return exits.success({
-      message: `An account has been created for ${newUser.email} successfully. Check your email to verify`,
+      message: `An account has been created for ${newUser.emailAddress} successfully. Check your email to verify`,
     });
    } catch (error) {
 
